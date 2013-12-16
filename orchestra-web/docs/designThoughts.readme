@@ -1,0 +1,22 @@
+Design Thoughts Document
+
+1.) Create a plugin system, where connectors to all the system are plugins.  For example a tomcat plugin,
+maybe a plugin for weblogic, websphere, etc.
+
+2.) Each connector may have several nodes.  Each node should be able to configured different, so that artifacts
+that are recognized can be moved, removed, between nodes.
+
+3.) Write an interface into Jenkins, so that the orchistration system is able to pull any artifact from the
+continious build system and can be pushed to any node. 
+
+4.) Build an Ajaxian interface using javascript, where the system maintains the state of the artifacts from either
+a particular node, build server, or repository of some type.
+
+5.) All deployment process should be allowed to be scheduled the deployments.
+
+6.) The user interface should be able to display history of an artifact, and be able to determine a unique
+finger print for an artifact so that the system can maintain a history of deployments.
+
+7.) A security matrix layer should be built in the future, that allows only certain users the ability to manage
+deployment of artifacts.
+
