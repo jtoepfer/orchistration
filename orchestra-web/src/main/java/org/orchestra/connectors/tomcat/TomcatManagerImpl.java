@@ -21,17 +21,27 @@ public class TomcatManagerImpl implements TomcatManager {
 	@Autowired
 	private ConfigurationService configurationService;
 	
+	
+	public void getServerInfo() {
+		
+	}
+	
 	public void getListOfInstalledApps() {
 		
-		final String uri = configurationService.getServiceUri();
-		if ( log.isDebugEnabled() ) {
-			log.debug("Uri: " + uri);
+		String protocol = "http";
+		if ( configurationService.isSSLEnabled() ) {
+			protocol = "https";
 		}
 		
+		StringBuilder sb = new StringBuilder(protocol)
+			.append("://").append(configurationService.getNodeUri())
+			.append("/manager/text/list");
+		
+		final String uri = sb.toString();
 		ResponseEntity<String> response = restTemplate.getForEntity(uri, String.class, new Object[] {});
 		String body = response.getBody();
 		if ( log.isDebugEnabled() ) {
-			log.debug("Response: " + body);
+			log.debug("Uri: " + uri + " Response: " + body);
 		}
 		
 	}

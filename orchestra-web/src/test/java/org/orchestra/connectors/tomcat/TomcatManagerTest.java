@@ -48,7 +48,7 @@ public class TomcatManagerTest {
 	@Test
 	public void testFetchAListOfApplications() {
 		
-		when(configurationService.getServiceUri()).thenReturn("http://localhost:8080/manager/text/list");
+		when(configurationService.getNodeUri()).thenReturn("http://localhost:8080");
 		
 		tomcatManager.getListOfInstalledApps();
 	}
